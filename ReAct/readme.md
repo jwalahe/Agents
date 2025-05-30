@@ -37,10 +37,11 @@ The core concept is to allow the AI to:
 ## Project Structure
 
 ```
-Agents/
+ReAct/
 ├── main.py              # Main execution logic
 ├── WikiTool.py          # Wikipedia interaction tool
 ├── promptTemplate.py    # System instructions and examples
+├── requirements.txt     # Dependencies for the project
 ├── .env                 # Environment variables (API keys)
 └── README.md            # This documentation
 ```
@@ -231,15 +232,30 @@ Final Answer: Clint Eastwood was the director of the movie "J. Edgar" in which L
 1. **Clone the repository**:
    ```
    git clone <repository-url>
-   cd Agents
+   cd Agents/ReAct
    ```
 
-2. **Install dependencies**:
+2. **Create and activate a virtual environment**:
+   ```powershell
+   # Create a virtual environment
+   python -m venv venv
+   
+   # Activate the virtual environment
+   .\venv\Scripts\Activate
    ```
+
+3. **Install dependencies**:
+   ```powershell
+   # Install from requirements.txt
+   pip install -r requirements.txt
+   ```
+   
+   Alternatively, you can install individual packages:
+   ```powershell
    pip install openai tiktoken wikipedia-api python-dotenv rich
    ```
 
-3. **Set up environment variables**:
+4. **Set up environment variables**:
    Create a `.env` file in the project root with:
    ```
    OPENAI_API_KEY=your_openai_api_key_here
@@ -247,11 +263,14 @@ Final Answer: Clint Eastwood was the director of the movie "J. Edgar" in which L
 
 ## Usage
 
-Run the main script and enter your question when prompted:
+After setting up the environment, run the main script and enter your question when prompted:
 
-```
+```powershell
+# Make sure your virtual environment is activated
 python main.py
 ```
+
+You should see the ReAct agent's thought process displayed in the terminal, with the final answer provided at the end.
 
 ## Extending the Framework
 
