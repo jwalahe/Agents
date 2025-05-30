@@ -2,15 +2,16 @@ import openai
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
-from WikiTool import WikiTool
-from promptTemplate import SYSTEM, EXAMPLES
+from Agents.ReAct.WikiTool import WikiTool
+from Agents.ReAct.promptTemplate import SYSTEM, EXAMPLES
+import re
 
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def parse_action(text):
     # Simple parser to extract search or lookup and query
-    import re
+    
     # Looks for Action 1: search["..."] or lookup["..."]
     match = re.search(r'Action\s*\d*:\s*(search|lookup)\["([^"]+)"\]', text)
     if match:
